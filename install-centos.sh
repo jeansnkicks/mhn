@@ -24,7 +24,7 @@ rpm -ivh epel-release-6-8.noarch.rpm
 
 yum update
 yum install -y gcc gcc-c++ kernel-devel
-yum install -y libffi-devel python-pip python-devel openssl-devel mercurial make coffeescript redis-server libgeoip-dev nginx
+yum install -y libffi-devel python-pip python-devel openssl-devel mercurial make coffee-script redis GeoIP-devel nginx
 
 cd "$SCRIPTS"
 SCRIPTS=`dirname $0`
