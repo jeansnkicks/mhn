@@ -8,14 +8,16 @@ fi
 
 set -e
 
-MHN_HOME=$(dirname "$0")
+# fix me - doesn't work on CentOS dirname returns an error
+#MHN_HOME=$(dirname "$0")
+MHN_HOME="/opt/mhn"
 SCRIPTS="$MHN_HOME/scripts-centos"
 cd "$SCRIPTS"
 
 echo "[`date`] Starting Installation of all pre-requisites"
 
 yum update
-yum install wget
+yum install -y wget
 cd /tmp
 wget dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh epel-release-6-8.noarch.rpm
