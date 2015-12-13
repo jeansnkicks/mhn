@@ -2,8 +2,6 @@
 
 set -x
 
-apt-get install -y git mercurial make coffeescript
-
 ####################################################################
 # Install a decent version of golang
 if [ "$(uname -m)" == "x86_64" ] ;
@@ -18,10 +16,10 @@ wget https://storage.googleapis.com/golang/${GO_PACKAGE}
 tar zxf ${GO_PACKAGE} && rm ${GO_PACKAGE}
 
 cd /usr/bin/
-for X in /usr/local/go/bin/*; 
-do 
-    echo $X; 
-    ln -s $X; 
+for X in /usr/local/go/bin/*;
+do
+    echo $X;
+    ln -s $X;
 done
 ####################################################################
 
@@ -50,9 +48,7 @@ make
 
 mkdir -p /var/log/mhn
 
-apt-get install -y supervisor
-
-cat > /etc/supervisor/conf.d/honeymap.conf <<EOF 
+cat > /etc/supervisor/conf.d/honeymap.conf <<EOF
 [program:honeymap]
 command=/opt/honeymap/server/server
 directory=/opt/honeymap
@@ -78,7 +74,7 @@ cat > /opt/hpfeeds/geoloc.json <<EOF
 {
     "HOST": "localhost",
     "PORT": 10000,
-    "IDENT": "geoloc", 
+    "IDENT": "geoloc",
     "SECRET": "$SECRET",
     "CHANNELS": [
         "dionaea.connections",
@@ -99,7 +95,7 @@ cat > /opt/hpfeeds/geoloc.json <<EOF
 }
 EOF
 
-cat > /etc/supervisor/conf.d/geoloc.conf <<EOF 
+cat > /etc/supervisor/conf.d/geoloc.conf <<EOF
 [program:geoloc]
 command=/opt/hpfeeds/env/bin/python /opt/hpfeeds/examples/geoloc/geoloc.py /opt/hpfeeds/geoloc.json
 directory=/opt/hpfeeds/
@@ -111,6 +107,3 @@ startsecs=10
 EOF
 
 supervisorctl update
-
-
-

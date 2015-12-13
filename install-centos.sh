@@ -12,6 +12,20 @@ MHN_HOME=$(dirname "$0")
 SCRIPTS="$MHN_HOME/scripts-centos"
 cd "$SCRIPTS"
 
+echo "[`date`] Starting Installation of all pre-requisites"
+
+yum update
+yum install -y libffi-dev build-essential python-pip python-dev git libssl-dev mercurial make coffeescript redis-server libgeoip-dev nginx
+
+SCRIPTS=`dirname $0`
+bash $SCRIPTS/install_mongo.sh
+
+pip install virtualenv
+pip install supervisor
+pip install cffi
+pip install pyopenssl==0.14
+pip install pymongo
+
 echo "[`date`] Starting Installation of all MHN packages"
 
 echo "[`date`] ========= Installing hpfeeds ========="
@@ -53,9 +67,6 @@ do
         break
     fi
 done
-
-
-
 
 while true;
 do

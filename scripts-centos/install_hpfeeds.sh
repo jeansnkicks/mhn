@@ -3,14 +3,6 @@
 set -e
 set -x
 
-yum update
-yum install -y libffi-dev build-essential python-pip python-dev git libssl-dev
-
-SCRIPTS=`dirname $0`
-bash $SCRIPTS/install_mongo.sh
-
-pip install virtualenv
-
 cd /tmp
 wget https://github.com/threatstream/hpfeeds/releases/download/libev-4.15/libev-4.15.tar.gz
 tar zxvf libev-4.15.tar.gz
@@ -25,15 +17,10 @@ cd hpfeeds
 virtualenv env
 . env/bin/activate
 
-pip install cffi
-pip install pyopenssl==0.14
-pip install pymongo
 pip install -e git+https://github.com/rep/evnet.git#egg=evnet-dev
 pip install .
 
 mkdir -p /var/log/mhn
-
-pip install supervisor
 
 cat >> /etc/supervisor/conf.d/hpfeeds-broker.conf <<EOF
 [program:hpfeeds-broker]

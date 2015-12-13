@@ -8,7 +8,7 @@ For questions regarding installation please review the [MHN Troubleshooting Guid
 
 ### HONEYPOT
 
-Deployed sensors with intrusion detection software installed: Snort, Kippo, Conpot, and Dionaea. 
+Deployed sensors with intrusion detection software installed: Snort, Kippo, Conpot, and Dionaea.
 
 ### MANAGEMENT SERVER
 
@@ -22,11 +22,12 @@ It also allows systems administrators to:
 - View a list of new attacks
 - Manage snort rules: enable, disable, download
 
-
-### INSTALLING SERVER (tested Ubuntu 12.0.4.3 x86_64)
+### INSTALLING SERVER
 
 Note: if you run into trouble during the install, please checkout the [troubleshooting guide](https://github.com/threatstream/MHN/wiki/MHN-Troubleshooting-Guide) on the wiki.  If you only want to experiment with MHN on some virtual machines, please check out the [Getting up and Running with Vagrant](https://github.com/threatstream/mhn/wiki/Getting-up-and-running-using-Vagrant) guide on the wiki.
-    
+
+### INSTALLING SERVER UBUNTU (tested Ubuntu 12.0.4.3 x86_64)
+
     $ cd /opt/
     $ sudo apt-get install git -y
     $ sudo git clone https://github.com/threatstream/mhn.git
@@ -37,25 +38,36 @@ be prompted for some configuration options.  See below for how this looks.
 
     $ sudo ./install.sh
 
+### INSTALLING SERVER CENTOS (tested CentOS 6.7 x86_64)
+
+    $ cd /opt/
+    $ sudo yum install git -y
+    $ sudo git clone https://github.com/threatstream/mhn.git
+    $ cd mhn/
+
+Run the following script to complete the installation.  While this script runs, you will
+be prompted for some configuration options.  See below for how this looks.
+
+    $ sudo ./install.sh
 
 ### Configuration:
-    
+
     ===========================================================
     MHN Configuration
     ===========================================================
     Do you wish to run in Debug mode?: y/n n
     Superuser email: YOUR_EMAIL@YOURSITE.COM
-    Superuser password: 
-    Server base url ["http://1.2.3.4"]: 
+    Superuser password:
+    Server base url ["http://1.2.3.4"]:
     Honeymap url ["http://1.2.3.4:3000"]:
-    Mail server address ["localhost"]: 
-    Mail server port [25]: 
+    Mail server address ["localhost"]:
+    Mail server port [25]:
     Use TLS for email?: y/n n
     Use SSL for email?: y/n n
-    Mail server username [""]: 
-    Mail server password [""]: 
-    Mail default sender [""]: 
-    Path for log file ["mhn.log"]: 
+    Mail server username [""]:
+    Mail server password [""]:
+    Mail default sender [""]:
+    Path for log file ["mhn.log"]:
 
 
 ### Running
@@ -83,10 +95,10 @@ If email based password resets are not working for you, here is another method.
     $ cd $MHN_HOME
     $ source env/bin/activate
     $ cd server
-    $ python manual_password_reset.py 
+    $ python manual_password_reset.py
     Enter email address: YOUR_USER@YOUR_SITE.com
-    Enter new password: 
-    Enter new password (again): 
+    Enter new password:
+    Enter new password (again):
     user found, updating password
 
 ### Deploying honeypots with MHN
