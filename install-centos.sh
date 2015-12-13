@@ -15,8 +15,15 @@ cd "$SCRIPTS"
 echo "[`date`] Starting Installation of all pre-requisites"
 
 yum update
-yum install -y libffi-dev build-essential python-pip python-dev git libssl-dev mercurial make coffeescript redis-server libgeoip-dev nginx
+yum install wget
+cd /tmp
+wget dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
 
+yum update
+yum install -y libffi-devel build-essential python-pip python-devel openssl-devel mercurial make coffeescript redis-server libgeoip-dev nginx
+
+cd "$SCRIPTS"
 SCRIPTS=`dirname $0`
 bash $SCRIPTS/install_mongo.sh
 
