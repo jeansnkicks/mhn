@@ -59,7 +59,6 @@ autorestart=true
 startsecs=10
 EOF
 
-apt-get install -y libgeoip-dev
 /opt/hpfeeds/env/bin/pip install GeoIP
 
 cd /opt/
