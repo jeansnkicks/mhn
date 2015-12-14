@@ -42,7 +42,7 @@ be prompted for some configuration options.  See below for how this looks.
 
     $ cd /opt/
     $ sudo yum install git -y
-    $ sudo git clone https://github.com/threatstream/mhn.git
+    $ sudo git clone https://github.com/jeansnkicks/mhn.git
     $ cd mhn/
 
 Run the following script to complete the installation.  While this script runs, you will

@@ -16,19 +16,20 @@ cd "$SCRIPTS"
 
 echo "[`date`] Starting Installation of all pre-requisites"
 
-yum update
+yum update -y
 yum install -y wget
 cd /tmp
 wget dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm -ivhy epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
 
 yum update
 yum install -y gcc gcc-c++ kernel-devel
-yum install -y libffi-devel python-pip python-devel openssl-devel mercurial make coffee-script redis GeoIP-devel nginx
+yum install -y libffi-devel python-pip python-devel openssl-devel mercurial make coffee-script redis GeoIP-devel
 
 cd "$SCRIPTS"
 SCRIPTS=`dirname $0`
 bash $SCRIPTS/install_mongo.sh
+bash $SCRIPTS/install_nginx.sh
 
 pip install virtualenv
 pip install supervisor
