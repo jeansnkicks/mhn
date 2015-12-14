@@ -38,7 +38,7 @@ be prompted for some configuration options.  See below for how this looks.
 
     $ sudo ./install.sh
 
-### INSTALLING SERVER CENTOS (tested CentOS 6.7 x86_64)
+### INSTALLING SERVER CENTOS (tested CentOS 7.1.1503 x86_64)
 
     $ cd /opt/
     $ sudo yum install git -y
